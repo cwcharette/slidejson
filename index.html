@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="container" class="container"></div>
+        <script type="application/javascript">
+            function reqListener () {
+                console.log(this.responseText);
+            }
+            
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", reqListener);
+            oReq.open("GET", "wonder.json",true);
+            oReq.send();
+            oReq.onreadystatechange = function() {
+                if (oReq.readyState == 4 && oReq.status == 200) {
+                    var aTest = JSON.parse(oReq.responseText);
+                    aParser(aTest);
+                }
+            };
+            
+            function aParser(arr) {
+                var out = "";
+
+                for (var i = 0; i < arr.length; i++) {
+                    out += '<div id="'+ arr[i].slideid +'" class="slide"><h1>'+ arr[i].slideHeader +'</h1><img src="img/' + arr[i].tImgUrl + '" alt="' +arr[i].tImgAlt + '"><p>' + arr[i].tParagraph + '</p><form action="">'
+                    if (arr[i].option1 != "hidden") {
+                        out += '<input type="radio" name="' + arr[i].slideid +'" onClick="' + arr[i].option1nextslide + '">' + arr[i].option1 + '</input><br/>';
+                    }
+                    if (arr[i].option2 != "hidden") {
+                        out += '<input type="radio" name="' + arr[i].slideid +'" onClick="' + arr[i].option2nextslide + '">' + arr[i].option2 + '</input><br/>';
+                    }
+                    if (arr[i].option3 != "hidden") {
+                        out += '<input type="radio" name="' + arr[i].slideid +'" onClick="' + arr[i].option3nextslide + '">' + arr[i].option3 + '</input><br/>';
+                    }
+                    if (arr[i].option4 != "hidden") {
+                        out += '<input type="radio" name="' + arr[i].slideid +'" onClick="' + arr[i].option4nextslide + '">' + arr[i].option4 + '</input><br/>';
+                    }
+                    out += '</form></div>'
+                }
+                document.getElementById("container").innerHTML = out;
+            }
+        </script>
+    </body>
+</html>
