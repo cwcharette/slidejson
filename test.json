@@ -1,0 +1,15 @@
+[{
+	"slideHeader":"Welcome",
+    "slideid":"slide_welcome",
+    "tImgUrl":"test.png",
+    "tImgAlt":"Just a Test",
+    "tParagraph":"A place to put your text",
+    "option1":"I agree",
+    "option1nextslide":"slideaccept1",
+    "option2":"Take me away from this place!",
+    "option2nextslide":"window.location.href='http://www.google.com'",
+    "option3":"hidden",
+    "option3nextslide":"",
+    "option4":"hidden",
+    "option4nextslide":""
+}]
